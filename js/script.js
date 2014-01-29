@@ -9,7 +9,17 @@ function MembersCtrl($scope) {
     $scope.members = [];
     
     $scope.addMember = function() {
-        $scope.members.push({text:$scope.memberText});
+        cardInfo = {text:$scope.memberText};
+
+
+        //if first chr is '%' then it's card input
+        //if(cardInfo[0] == '%') {
+        //    alert(cardInfo[0]);
+        //}
+
+        //else data is normal name input
+        
+        $scope.members.push("Hello World");
         $scope.memberText = '';
     };
     
