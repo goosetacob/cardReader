@@ -1,25 +1,23 @@
-/*
 //prevent random refresh
 window.onbeforeunload = function() {
-    return "All your info will be lost!";
+    return "All your attendance info will be lost!";
 }
-*/
 
 function MembersCtrl($scope) {
     $scope.members = [];
     
     $scope.addMember = function() {
-        cardInfo = {text:$scope.memberText};
+        if (($scope.memberText).substring(0,1) === '%' ) {
+            //user swiped card!
+            $scope.memberText = parseName($scope.memberText);
+            $scope.members.push({text:$scope.memberText});
+        }
+        else {
+            //user typed name
+            $scope.memberText = $scope.memberText.toUpperCase();
+            $scope.members.push({text:$scope.memberText});
+        }
 
-
-        //if first chr is '%' then it's card input
-        //if(cardInfo[0] == '%') {
-        //    alert(cardInfo[0]);
-        //}
-
-        //else data is normal name input
-        
-        $scope.members.push("Hello World");
         $scope.memberText = '';
     };
     
@@ -27,7 +25,7 @@ function MembersCtrl($scope) {
         var count = 0;
         angular.forEach($scope.members, function(member) {
                         count += member.done ? 0 : 1;
-                        });
+        });
         return count;
     };
     
@@ -52,3 +50,29 @@ function MembersCtrl($scope) {
         pom.click();
     };
 }
+
+function parseName(_input) {
+    var _output = _input;
+
+    var carrot1 = _input.indexOf("^");
+    _output = _input.substring(carrot1+1);
+
+    carrot1 = _output.indexOf("^");
+    _output = _output.substring(0, carrot1);
+
+    carrot1 = _output.indexOf("/");
+    _output = _output.substring(carrot1+1) + _output.substring(0, carrot1);
+
+    return _output;
+}
+
+function getOrgName() {
+    var orgName = prompt("Message", "default value in the text field");
+    
+}
+
+
+
+
+
+
