@@ -1,0 +1,67 @@
+<!DOCTYPE HTML>
+<html ng-app>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>BCOE Card Reader</title>
+        
+        <!--load stylesheetss-->
+        <link rel="stylesheet" type="text/css" href="css/style.css">
+        <link rel="stylesheet" href="css/foundation.min.css" />
+        
+        <!--load angular.js & local scripts-->
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.3/angular.min.js"></script>
+        <script src="js/script.js"></script>
+            
+    </head>
+    <body>
+        <div class="row">
+            <div id="title-panel">
+                <img src="images/bcoeucr.jpg">
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="panel callout radius" style="text-align:center;">
+                Please swipe your UCR Student ID Card<br>OR<br>simply type in your name
+            </div>
+        </div>
+        <div class="row">
+            <div ng-controller="MembersCtrl">
+                <!--main content where to scan people in-->
+                <div class="large-5 medium-5 columns">
+                    <div id="center-panel">
+                        <form id="cardSwipes" ng-submit="addMember()">
+                            <input id="swipe" type="text" ng-model="memberText"  size="50"
+                                placeholder="Welcome!" autofocus>
+                            <input class="small button" type="submit" value="add">
+                        </form>
+                    </div>
+                </div>
+                
+                <!--right side bar with list of all members present-->
+                <div class="large-6 medium-6 columns">
+                    <div class="panel">
+                        <span>
+                            Members here today:
+                        </span>
+                    
+                        <ul>
+                            <li ng-repeat="mem in members">
+                                <span class="done-{{mem.done}}">{{mem.text}}</span>
+                            </li>
+                        </ul>
+                        <h6><a href="" ng-click="archive()">download</a> me as a .CSV file :]</h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="" style="text-align:right;">
+                <a href="https://github.com/gusbee/cardReader">source code</a>
+                <!--*<em>STILL UNDER DEVELOPMENT</em>*<br>currently saves users name<br>through user input or card swipe-->
+            </div>
+        </div>
+    </body>
+</html>
