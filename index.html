@@ -22,13 +22,18 @@
         </div>
         <hr>
         <div class="row">
+            <div class="panel callout radius" style="text-align:center;">
+                Please swipe your UCR Student ID Card<br>OR<br>simply type in your name
+            </div>
+        </div>
+        <div class="row">
             <div ng-controller="MembersCtrl">
                 <!--main content where to scan people in-->
                 <div class="large-5 medium-5 columns">
                     <div id="center-panel">
                         <form id="cardSwipes" ng-submit="addMember()">
                             <input id="swipe" type="text" ng-model="memberText"  size="50"
-                                placeholder="Enter First and Last Name!" autofocus>
+                                placeholder="Welcome!" autofocus>
                             <input class="small button" type="submit" value="add">
                         </form>
                     </div>
